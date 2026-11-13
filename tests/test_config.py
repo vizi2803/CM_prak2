@@ -23,6 +23,7 @@ class TestConfigValidation(unittest.TestCase):
 
     def test_valid_remote_config(self):
         """Проверяет успешную загрузку корректного конфига с URL."""
+        expected_url = "https://crates.io/api/v1/crates"
         csv_data = (
             "package_name,repository_url,test_mode,ascii_tree\n"
             "serde,https://crates.io/api/v1/crates,false,true\n"
@@ -30,7 +31,7 @@ class TestConfigValidation(unittest.TestCase):
         path = self._create_temp_csv(csv_data)
         cfg = load_config(path)
         self.assertEqual(cfg["package_name"], "serde")
-        self.assertEqual(cfg["repository_url"], "https://crates.io/api/v1/crates")
+        self.assertEqual(cfg["repository_url"], expected_url)
         self.assertFalse(cfg["test_mode"])
         self.assertTrue(cfg["ascii_tree"])
 
