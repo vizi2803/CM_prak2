@@ -1,0 +1,2 @@
+package_name,repository_url,test_mode,ascii_tree
+serde,https://crates.io/api/v1/crates,false,true
